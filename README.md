@@ -23,6 +23,14 @@ publica el sitio al hacer push a `main`. En el repositorio, configura **Settings
 > Pages > Build and deployment > Source** como **GitHub Actions**. La URL del
 sitio aparecerá en la configuración de Pages y en la ejecución del flujo.
 
+## Publicación en Vercel
+
+El proyecto es HTML estático y no necesita compilación ni dependencias. Para
+desplegarlo, importa el repositorio en Vercel y deja el directorio raíz (`.`)
+como raíz del proyecto, sin comando de compilación ni directorio de salida; o
+usa la CLI de Vercel desde esta carpeta con `vercel` y luego `vercel --prod`.
+Vercel detecta `index.html` automáticamente.
+
 ## Patrón Command
 
 - **Command**: `MoveCommand`, `BombCommand` y `MacroCommand`.
