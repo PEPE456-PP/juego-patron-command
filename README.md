@@ -9,6 +9,9 @@ la opción de deshacer/rehacer, las bombas y los combos.
 Abre [`index.html`](./index.html) en un navegador moderno. No requiere
 instalación, servidor ni dependencias de JavaScript.
 
+El proyecto separa la estructura en `index.html`, los estilos en `styles.css`
+y la lógica del juego en `game.js`.
+
 - Usa las flechas o `W`, `A`, `S`, `D` para moverte.
 - `Espacio`: dash.
 - `B`: bomba.

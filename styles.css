@@ -1,0 +1,260 @@
+:root {
+  --bg: #f3f1fb;
+  --panel: #ffffff;
+  --ink: #1b1633;
+  --mute: #6a6486;
+  --line: #d9d4ee;
+  --grid: #ebe8f7;
+  --wall: #4b3f8f;
+  --coin: #e8a400;
+  --me: #d6246e;
+  --ok: #0f8a5f;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #120f26;
+    --panel: #1c1838;
+    --ink: #f1eeff;
+    --mute: #a19bc4;
+    --line: #352f66;
+    --grid: #221d45;
+    --wall: #6f5fd6;
+    --coin: #ffc233;
+    --me: #ff4f98;
+    --ok: #47d6a0;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #120f26;
+  --panel: #1c1838;
+  --ink: #f1eeff;
+  --mute: #a19bc4;
+  --line: #352f66;
+  --grid: #221d45;
+  --wall: #6f5fd6;
+  --coin: #ffc233;
+  --me: #ff4f98;
+  --ok: #47d6a0;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 "Space Grotesk", system-ui, sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.sub {
+  max-width: 60ch;
+  margin: 0 0 20px;
+  color: var(--mute);
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.box {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+canvas {
+  display: block;
+  width: min(100%, calc(70vh * 4 / 3));
+  width: min(100%, calc(70dvh * 4 / 3));
+  height: auto;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  background: var(--grid);
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.msg {
+  min-height: 1.5em;
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:hover {
+  border-color: var(--me);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--me);
+  outline-offset: 2px;
+}
+
+button.primary {
+  border-color: var(--me);
+  background: var(--me);
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(56px, 72px));
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.pad button {
+  padding: 10px 0;
+}
+
+.bind {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bind button {
+  min-width: 84px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.bind button.wait {
+  border-color: var(--coin);
+  background: var(--coin);
+  color: #1b1633;
+}
+
+ol {
+  max-height: 190px;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  color: var(--mute);
+  font: 13px/1.6 "JetBrains Mono", monospace;
+  list-style: none;
+}
+
+ol li:last-child {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.roles {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--mute);
+  font-size: 14px;
+}
+
+.roles b {
+  color: var(--ink);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+  color: var(--ink);
+  font: 12.5px/1.5 "JetBrains Mono", monospace;
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  main {
+    padding: 12px 10px 28px;
+  }
+
+  .box {
+    padding: 10px;
+  }
+
+  .hud {
+    font-size: 14px;
+  }
+
+  .btns button {
+    flex: 1 1 30%;
+  }
+
+  .sub {
+    font-size: 14px;
+  }
+}
